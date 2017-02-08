@@ -6,5 +6,5 @@ The NC Council for Women (CFW) provides county-level data on their sexual assaul
 
 live application: <a href="http://aleahhowell.com/NCviolence/" target="_blank">aleahhowell.com/NCviolence/</a>
 
-> For other d3 codes, check =hands-on= folder
+Note: For other d3 codes, check **hands-on** folder
 
