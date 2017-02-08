@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Classification Example</title>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://npmcdn.com/simple-statistics@2.0.0/dist/simple-statistics.min.js"></script>
+<script src="handson_classifier.js"></script>
+<style>
+.axis-label {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: sans-serif;
+	font-size: 11px;
+}
+
+</style>
+</head>
+<body>
+	<p>Select a class:
+		<select onchange="renderVis(this.options[this.selectedIndex].value);">
+			<option value="us">All</option>
+			<option value="Northeast">Northeast-like states</option>
+			<option value="South">South-like states</option>
+			<option value="Unknown">Unknown</option>
+			<option value="none">None</option>
+		</select>
+	</p>
+
+	<span id="details">&nbsp;</span>
+
+	<div id="vis_container">
+	</div>
+
+	<p>The data used in this exercise was retrieved on July 23, 2013 from
+	the Henry J.  Kaiser Family Foundation's 2011 study on State Health
+	Facts (http://kff.org/statedata/).</p>
+
+	<script>
+		//initialize visualization
+		initVis();
+		//default class value 'us'
+		renderVis("us");
+
+	</script>
+</body>
+</html>

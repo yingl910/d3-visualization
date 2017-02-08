@@ -1,0 +1,29 @@
+<html>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="handson_povertydata.js"></script>
+<style>
+body {
+	font-family: sans-serif;
+}
+
+line {
+	pointer-events: none;
+}
+
+.label {
+	font-size: 10pt;
+}
+
+.avglabel {
+	font-size: 8pt;
+}
+</style>
+<body>
+	<h1>Poverty Rates in the United States by Region</h1>
+	<svg id="svgcanvas" style="width: 1000; height: 400;"></svg>
+
+	<script>
+		var vis = new PovertyRateVis("svgcanvas");
+	</script>
+</body>
+</html>
