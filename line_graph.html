@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- css -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/stateface.css" />
+
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"> <span class="sf sf-nc"></span> North Carolina Violence Prevention</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="stacked_bar.html">All Services</a></li>
+          <li><a href="line_graph.html">In-Person Services</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Title Information -->
+    <div class="row">
+      <div class="col-sm-12 col-md-2 col-lg-2">
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        <p class="title-secondary">Clients Enrolled in Domestic Violence and Sexual Assault Programs</p>
+      </div>
+      <div class="col-sm-12 col-md-2 col-lg-2">
+      </div>
+    </div>
+    <!-- Dropdown or Buttons -->
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 buttons">
+        <!-- <div class="buttons">
+          <button class="btn btn-primary linegraph active" id="both-button">Both</button>
+          <button class="btn btn-primary linegraph" id="dv-button">Domestic Violence</button>
+          <button class="btn btn-primary linegraph" id="sa-button">Sexual Assault</button>
+        </div> -->
+        <p>View:
+          <select id="line-change" onchange="lineChange(this.options[this.selectedIndex].value);">
+            <option value="both">Both</option>
+            <option value="dv">Domestic Violence</option>
+            <option value="sa">Sexual Assault</option>
+          </select>
+        </p>
+      </div>
+    </div>
+    <!-- Render Line Chart -->
+    <div class="row">
+      <div class="col-sm-12 col-md-2 col-lg-2">
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 linegraph-container">
+        <div id="linegraph"></div>
+      </div>
+      <div class="col-sm-12 col-md-2 col-lg-2">
+      </div>
+    </div>
+
+  </div> <!-- container -->
+
+<script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="js/line-graph.js"></script>
+
+<script>
+
+  $('#both-button').on('click', function () {
+       $().button('toggle');
+       $('#line-chart').toggle()
+     });
+  $('#dv-button').on('click', function () {
+       $().button('toggle');
+       $('#dv-chart').toggle()
+     });
+  $('#sa-button').on('click', function () {
+       $().button('toggle');
+       $('#sa-chart').toggle()
+     });
+
+  d3.csv("data/dv-services-2015-16.csv", function(data) {
+    data.forEach(function(d) {
+        var mySelect = document.getElementById("countySelect")
+        var element = document.createElement("option")
+        element.textContent = d.County;
+        element.value = d.County;
+        mySelect.appendChild(element)
+    });
+  });
+
+</script>
+
+
+</body>
+</html>
